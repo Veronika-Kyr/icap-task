@@ -1,0 +1,21 @@
+.datapage {
+    min-height: 100vh;
+    padding: 20px 30px;
+}
+
+.headContent {
+    margin: 15px;
+    padding: 10px;
+}
+
+table,
+
+th,
+td {
+    border: 1px solid;
+
+}
+
+table {
+    border-collapse: collapse;
+}
