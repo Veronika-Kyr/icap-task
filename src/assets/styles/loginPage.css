@@ -1,3 +1,64 @@
 h1 {
     font-weight: 700;
 }
+
+.subscribeHead {
+    margin-top: 40px;
+}
+
+.subscribingForm {
+
+    max-width: 700px;
+    min-height: 400px;
+    margin: 30px auto;
+    padding: 7rem 10px;
+    border: 1px solid grey;
+    border-radius: 5px;
+    background: rgb(236, 237, 240);
+}
+
+.successSubscribe {
+    max-width: 700px;
+    min-height: 400px;
+    margin: 30px auto;
+    padding: 7rem 10px;
+    border: 1px solid grey;
+    border-radius: 5px;
+    background: rgb(236, 237, 240);
+}
+
+label {
+    margin-right: 20px;
+    margin-bottom: 30px;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+input,
+.inputValid {
+    padding: 5px;
+    border: none;
+    width: 300px;
+    border-radius: 5px;
+
+}
+
+.redBorder {
+    border: 1px solid red;
+}
+
+.subscribeBTN {
+    margin-top: 15px;
+    padding: 20px 50px;
+    border: none;
+    border-radius: 5px;
+    background: #397BE5;
+    color: white;
+
+}
+
+.subscribeBTN:hover {
+    color: #397BE5;
+    background: white;
+    cursor: grab;
+}

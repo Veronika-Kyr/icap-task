@@ -4,7 +4,7 @@ export interface ILoginData {
 }
 
 export interface IUser {
-    "id"?: string,
+    "id": number,
     "name": string,
     "birthday_date": string,
     "email": string,

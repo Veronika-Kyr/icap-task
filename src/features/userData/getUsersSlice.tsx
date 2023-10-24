@@ -4,14 +4,14 @@ import { IUser } from '../../interfaces/user';
 export const fetchUsers = createAsyncThunk(
     "users/fetch",
     async () => {
-        const response = await fetch(`http://146.190.118.121/api/table/`);
-        return (await response.json()) as IUser[];
+        const response = await fetch(`https://technical-task-api.icapgroupgmbh.com/api/table/`);
+        return response.json();
     }
 );
 
 const usersSlice = createSlice({
     name: 'users',
-    initialState: { data: [], fetchStatus: '' } as { data: IUser[], fetchStatus: string },
+    initialState: { data: {}, fetchStatus: '' } as { data: { results: IUser[] }, fetchStatus: string },
     reducers: {
         /*  updateUsers(state, action) {
               state.data = action.payload;

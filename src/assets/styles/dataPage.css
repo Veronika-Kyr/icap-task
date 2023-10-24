@@ -8,6 +8,13 @@
     padding: 10px;
 }
 
+.errorMessage {
+    padding: 20px;
+    font-size: 24px;
+    color: red;
+    font-weight: 600;
+}
+
 table,
 
 th,
@@ -18,4 +25,10 @@ td {
 
 table {
     border-collapse: collapse;
+}
+
+article {
+    margin: 50px 30px;
+    text-align: justify;
+    text-indent: 20px;
 }

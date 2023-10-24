@@ -5,7 +5,7 @@ import { ILoginData } from '../../interfaces/user';
 export const fetchLogin = createAsyncThunk(
     "login/fetch",
     async function (userData: ILoginData) {
-        const response = await fetch('http://146.190.118.121/api/login/', {
+        const response = await fetch('https://technical-task-api.icapgroupgmbh.com/api/login/', {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
@@ -19,23 +19,23 @@ export const fetchLogin = createAsyncThunk(
 
 const loginSlice = createSlice({
     name: 'login',
-    initialState: { data: [], fetchStatus: '', isSubscribed: false } /*as { data: string[], fetchStatus: string, isSubscribed: boolean }*/,
+    initialState: { data: {}, fetchStatus: '', isSubscribed: false } as { data: { message?: string, error?: string }, fetchStatus: string, isSubscribed: boolean },
     reducers: {},
     extraReducers: (builder) => {
         builder.addCase(fetchLogin.fulfilled, (state, action) => {
-            state.data = action.payload
-            state.fetchStatus = 'success'
-            state.isSubscribed = !state.isSubscribed
-            /* if (!action.payload.error) {
-                 state.data = action.payload
-                 state.fetchStatus = 'success'
-                 state.isSubscribed = !state.isSubscribed
-             }
-             else {
-                 state.data = action.payload
-                 state.fetchStatus = ''
-                 state.isSubscribed = false
-             }*/
+            /* state.data = action.payload
+             state.fetchStatus = 'success'
+             state.isSubscribed = !state.isSubscribed*/
+            if (!action.payload.error) {
+                state.data = action.payload
+                state.fetchStatus = 'success'
+                state.isSubscribed = !state.isSubscribed
+            }
+            else {
+                state.data = action.payload
+                state.fetchStatus = ''
+                state.isSubscribed = false
+            }
         })
             .addCase(fetchLogin.pending, (state) => {
                 state.fetchStatus = 'loading'

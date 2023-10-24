@@ -17,63 +17,64 @@ export default function DataPage() {
     useEffect(() => {
         dispatch(fetchUsers())
     }, [])
-    const nPages = Math.ceil((users.data.length) / recordsPerPage);
 
 
-    return (
-        <div className='page'>
-            <Header />
-            <div className='datapage'>
-                <div className='homepage-cover'>
-                    <h2 className='headContent'> List of employees</h2>
+    if (users.fetchStatus === 'success') {
+        const nPages = Math.ceil((users.data.results.length) / recordsPerPage);
+        return (
+            <div className='page'>
+                <Header />
+                <div className='datapage'>
+                    <div className='homepage-cover'>
+                        <h2 className='headContent'> List of employees</h2>
+                    </div>
+                    <div className='table-content'>
+                        <table className='table'>
+                            <thead>
+                                <tr>
+                                    <th scope='col'>Full name</th>
+                                    <th scope='col'>Date of birth</th>
+                                    <th scope='col' >Email</th>
+                                    <th scope='col' >Phone number</th>
+                                    <th scope='col' >Address</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {users.fetchStatus === 'success' && (users.data.results.slice(indexOfFirstRecord,
+                                    indexOfLastRecord)).map((user, index) => {
+                                        return (
+                                            <tr className='tableRowContent' key={index} >
+                                                <td>{user.name}</td>
+                                                <td>{user.birthday_date}</td>
+                                                <td >{user.email}</td>
+                                                <td >{user.phone_number}</td>
+                                                <td >{user.address}</td>
+                                            </tr>
+                                        )
+                                    })}
+                            </tbody>
+                        </table>
+
+                        <Pagination
+                            nPages={nPages}
+                            currentPage={currentPage}
+                            setCurrentPage={setCurrentPage}
+                        />
+                    </div>
+                    <article>
+                        Частково я ще з підліткового віку була пов'язана зі сферою IT та вивчала програмування.
+                        У 90-ті це були Basic та Pascal, згодом трохи Delphi. Хоча ВНЗ, який я закінчила, авіаційний, -
+                        випускаюча кафедра дала можливість вивчати дисципліни IT сфери (основи проектування та створення баз даних).
+                        В аспірантурі моя наукова робота була пов'язана з розробкою адаптивного інтерфейсу автоматизованих систем в
+                        авіації з використанням засобів СППР. Дисципліни, що я викладала у той час, також зі сфери IT. І, звісно,
+                        мені завжди було це цікаво. Front-end development для мене новий та цікавий напрямок, але він гармонійно
+                        вписався у мій попередній досвід. Мені подобається верстати сайти, ще більше подобається працювати на JS над
+                        їхньою функціональністю. Тож з часом хотілося б розвинутись у напрямку fullstack.
+                    </article>
                 </div>
-                <div className='table-content'>
-                    <table className='table'>
-                        <thead>
-                            <tr>
-                                <th scope='col'>Full name</th>
-                                <th scope='col'>Date of birth</th>
-                                <th scope='col' >Email</th>
-                                <th scope='col' >Phone number</th>
-                                <th scope='col' >Address</th>
-
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {(users.data.slice(indexOfFirstRecord,
-                                indexOfLastRecord)).map((user, index) => {
-                                    return (
-                                        <tr className='tableRowContent' key={index} >
-                                            <td>{user.name}</td>
-                                            <td>{user.birthday_date}</td>
-                                            <td >{user.email}</td>
-                                            <td >{user.phone_number}</td>
-                                            <td >{user.address}</td>
-                                        </tr>
-                                    )
-                                })}
-                        </tbody>
-                    </table>
-
-                    <Pagination
-                        nPages={nPages}
-                        currentPage={currentPage}
-                        setCurrentPage={setCurrentPage}
-                    />
-                </div>
-                <article>
-                    Частково я ще з підліткового віку була пов'язана зі сферою IT та вивчала програмування.
-                    У 90-ті це були Basic та Pascal, згодом трохи Delphi. Хоча ВНЗ, який я закінчила, авіаційний, -
-                    випускаюча кафедра дала можливість вивчати дисципліни IT сфери (основи проектування та створення баз даних).
-                    В аспірантурі моя наукова робота була пов'язана з розробкою адаптивного інтерфейсу автоматизованих систем в
-                    авіації з використанням засобів СППР. Дисципліни, що я викладала у той час, також зі сфери IT. І, звісно,
-                    мені завжди було це цікаво. Front-end development для мене новий та цікавий напрямок, але він гармонійно
-                    вписався у мій попередній досвід. Мені подобається верстати сайти, ще більше подобається працювати на JS над
-                    їхньою функціональністю. Тож з часом хотілося б розвинутись у напрямку fullstack.
-                </article>
+                <Footer />
             </div>
-            <Footer />
-        </div>
-    )
-
+        )
+    }
 }
