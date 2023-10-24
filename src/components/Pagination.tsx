@@ -1,7 +1,8 @@
 import React from 'react';
+import { IAppProps } from '../interfaces/appProps';
 
 
-export default function Pagination({ nPages, currentPage, setCurrentPage }) {
+export default function Pagination({ nPages, currentPage, setCurrentPage }: IAppProps) {
 
     const pageNumbers = [...Array(nPages + 1).keys()].slice(1)
 

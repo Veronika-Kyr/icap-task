@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { ILoginData } from '../../interfaces/user';
-//import { IQuery } from '../interfaces/query';
 
 export const fetchLogin = createAsyncThunk(
     "login/fetch",

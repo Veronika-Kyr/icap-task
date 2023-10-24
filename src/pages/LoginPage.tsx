@@ -26,7 +26,7 @@ export default function LoginPage() {
         setUserPassword(event.currentTarget.value);
     }
 
-    function handleSubscribe(e: React.FormEvent<HTMLFormElement>) {
+    function handleSubscribe(e: React.MouseEvent<HTMLButtonElement>) {
         e.preventDefault();
         dispatch(fetchLogin({ 'username': username, 'password': password }));
     }
