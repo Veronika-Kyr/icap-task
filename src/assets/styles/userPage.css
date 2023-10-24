@@ -1,0 +1,44 @@
+.editUserPage {
+    padding: 30px;
+}
+
+.contentEdit h2 {
+    margin-bottom: 30px;
+}
+
+.inputEdit {
+    margin-right: 10px;
+    width: 150px;
+}
+
+.inputBlock {
+    display: flex;
+    justify-content: space-between;
+}
+
+.changesBTN {
+    margin-top: 30px;
+    padding: 20px 50px;
+    border: none;
+    border-radius: 5px;
+    background: #397BE5;
+    color: white;
+}
+
+.changesBTN:hover {
+    color: #397BE5;
+    background: white;
+    cursor: grab;
+}
+
+.editBTN {
+    margin-bottom: 30px;
+    padding: 15px 30px;
+    float: right;
+    border: none;
+    border-radius: 5px;
+}
+
+.editBTN:hover {
+    cursor: grab;
+}

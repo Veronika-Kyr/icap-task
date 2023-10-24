@@ -22,9 +22,7 @@ const loginSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder.addCase(fetchLogin.fulfilled, (state, action) => {
-            /* state.data = action.payload
-             state.fetchStatus = 'success'
-             state.isSubscribed = !state.isSubscribed*/
+
             if (!action.payload.error) {
                 state.data = action.payload
                 state.fetchStatus = 'success'
@@ -48,4 +46,3 @@ const loginSlice = createSlice({
 
 export default loginSlice;
 
-//export const { updateUsers } = loginSlice.actions;

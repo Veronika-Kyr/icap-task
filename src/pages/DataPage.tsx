@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import '../assets/styles/dataPage.css'
 import { fetchUsers } from "../features/userData/getUsersSlice";
+import { Link, useLocation } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Pagination from '../components/Pagination';
@@ -17,7 +18,8 @@ export default function DataPage() {
     useEffect(() => {
         dispatch(fetchUsers())
     }, [])
-
+    const location = useLocation();
+    console.log(location);
 
     if (users.fetchStatus === 'success') {
         const nPages = Math.ceil((users.data.results.length) / recordsPerPage);
@@ -37,7 +39,6 @@ export default function DataPage() {
                                     <th scope='col' >Email</th>
                                     <th scope='col' >Phone number</th>
                                     <th scope='col' >Address</th>
-
                                 </tr>
                             </thead>
                             <tbody>
@@ -45,7 +46,8 @@ export default function DataPage() {
                                     indexOfLastRecord)).map((user, index) => {
                                         return (
                                             <tr className='tableRowContent' key={index} >
-                                                <td>{user.name}</td>
+
+                                                <td> <Link title="Click to edit this record" to={`${user.id}`}>{user.name}</Link></td>
                                                 <td>{user.birthday_date}</td>
                                                 <td >{user.email}</td>
                                                 <td >{user.phone_number}</td>
