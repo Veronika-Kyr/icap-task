@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import '../assets/styles/dataPage.css'
 import { fetchUsers } from "../features/userData/getUsersSlice";
 import Header from '../components/Header';

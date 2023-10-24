@@ -1,4 +1,3 @@
-import React from 'react';
 import { IAppProps } from '../interfaces/appProps';
 
 
