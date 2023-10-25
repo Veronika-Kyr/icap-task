@@ -4,10 +4,14 @@ export interface ILoginData {
 }
 
 export interface IUser {
-    "id": number,
+    "id": string,
     "name": string,
     "birthday_date": string,
     "email": string,
     "phone_number": string,
     "address": string
+}
+
+export interface IUserParams {
+    "id"?: string;
 }

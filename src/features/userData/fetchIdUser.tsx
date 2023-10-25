@@ -4,7 +4,7 @@ import { IUser } from '../../interfaces/user';
 
 export const fetchIdUser = createAsyncThunk(
     "user/fetch",
-    async (id) => {
+    async (id: string) => {
         const response = await fetch(`https://technical-task-api.icapgroupgmbh.com/api/table/${id}`);
         return response.json();
     }

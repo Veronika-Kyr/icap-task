@@ -7,12 +7,16 @@ import '../assets/styles/userPage.css'
 import { fetchIdUser } from '../features/userData/fetchIdUser';
 import { fetchEdit } from '../features/userData/editUserSlice';
 import { IUser } from '../interfaces/user';
+import { IUserParams } from '../interfaces/user';
 
+//type UserParams = {
+//  id: string;
+//};
 
 export function UserPage() {
     const user = useAppSelector((state) => state.user);
     const [formState, setFormState] = useState<IUser>({
-        "id": 0,
+        "id": '',
         "name": '',
         "birthday_date": '',
         "email": '',
@@ -22,18 +26,31 @@ export function UserPage() {
     const [formVisibslity, setFormVisibslity] = useState(false);
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
-    const { id } = useParams();
+    const param: IUserParams = useParams();
+    // const { id } = useParams<UserParams>();
+    console.log(param);
 
     useEffect(() => {
-        dispatch(fetchIdUser(id))
+        dispatch(fetchIdUser(param.id as string))
         setFormState(user.onIDdata);
     }, [dispatch])
 
-    function changeState(value: string | number, field: keyof IUser) {
-        const clone: IUser = { ...formState };
-        clone[field] = value;
+    function changeState(value: string, field: string) {
+        const clone = { ...formState };
+        clone[field as keyof IUser] = value;
+        //  console.log(keyof IUser);
         setFormState(clone);
     }
+
+
+
+
+
+    /* function changeState(value: string | number, field: keyof IUser) {
+         const clone: IUser = { ...formState };
+         clone[field] = value;
+         setFormState(clone);
+     }*/
 
     function submitData(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
@@ -41,12 +58,11 @@ export function UserPage() {
 
         //  form.current?.reset();
         //  setdisabledBtn(true);
-    };
+    }
 
     function handleName(event: React.FormEvent<HTMLInputElement>) {
         changeState(event.currentTarget.value, 'name')
     }
-
 
     function handleBDay(event: React.FormEvent<HTMLInputElement>) {
         changeState(event.currentTarget.value, 'birthday_date')
@@ -63,9 +79,6 @@ export function UserPage() {
     function handleAddress(event: React.FormEvent<HTMLInputElement>) {
         changeState(event.currentTarget.value, 'address')
     }
-
-
-
 
 
     if (user.onIDdata && user.fetchStatus !== 'error') {
@@ -86,7 +99,6 @@ export function UserPage() {
                                 <th scope='col' >Email</th>
                                 <th scope='col' >Phone number</th>
                                 <th scope='col' >Address</th>
-
                             </tr>
                         </thead>
                         <tbody>
@@ -98,17 +110,16 @@ export function UserPage() {
                                 <td >{user.onIDdata.phone_number}</td>
                                 <td >{user.onIDdata.address}</td>
                             </tr>
-
                         </tbody>
                     </table>
                     {formVisibslity && <div>
                         <form className='editForm' onSubmit={submitData}>
                             <div className='inputBlock'>
-                                <input className='inputEdit' type='text' onChange={handleName}></input>
-                                <input className='inputEdit' type='text' onChange={handleBDay}></input>
-                                <input className='inputEdit' type='text' onChange={handleEmail}></input>
-                                <input className='inputEdit' type='text' onChange={handlePhone}></input>
-                                <input className='inputEdit' type='text' onChange={handleAddress}></input></div>
+                                <input className='inputEdit' type='text' onChange={handleName} />
+                                <input className='inputEdit' type='text' onChange={handleBDay} />
+                                <input className='inputEdit' type='text' onChange={handleEmail} />
+                                <input className='inputEdit' type='text' onChange={handlePhone} />
+                                <input className='inputEdit' type='text' onChange={handleAddress} /></div>
                             <button className='changesBTN' type='submit'>SAVE CHANGES</button>
                         </form>
                     </div>}

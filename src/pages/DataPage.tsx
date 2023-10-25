@@ -65,14 +65,12 @@ export default function DataPage() {
                         />
                     </div>
                     <article>
-                        Частково я ще з підліткового віку була пов'язана зі сферою IT та вивчала програмування.
-                        У 90-ті це були Basic та Pascal, згодом трохи Delphi. Хоча ВНЗ, який я закінчила, авіаційний, -
-                        випускаюча кафедра дала можливість вивчати дисципліни IT сфери (основи проектування та створення баз даних).
-                        В аспірантурі моя наукова робота була пов'язана з розробкою адаптивного інтерфейсу автоматизованих систем в
-                        авіації з використанням засобів СППР. Дисципліни, що я викладала у той час, також зі сфери IT. І, звісно,
-                        мені завжди було це цікаво. Front-end development для мене новий та цікавий напрямок, але він гармонійно
-                        вписався у мій попередній досвід. Мені подобається верстати сайти, ще більше подобається працювати на JS над
-                        їхньою функціональністю. Тож з часом хотілося б розвинутись у напрямку fullstack.
+                        Hello!
+                        So, what additional information can be written here but cannot be found in my CV or on my LinkedIn page?..
+                        I’m Veronika and here is my task. I don’t know whether you’d like my project but I’m sure that under control of Seniors, Leads and Mentors from your company I’ll be working faster, better and my code will be cleaner)))) I adore coding. I always say Front-end development is exciting for me, because I feel like being an artist who draws a website using HTML/CSS, or a witch who adds functionality to a website through manipulations with "magic" JS tools)))
+                        Also, if you find a user in your database whose name was changed into a heavy metal or rock star’s name, be sure it was definitely me while testing PATCH request 😉
+                        What about me as a person and my private life? I used to be an Internally Displaced Person twice. And it just made me stronger. My life challenges are like those lemons which I catch and transform into lemonade. And, of course, like all of us in Ukraine, I never surrender 💙💛
+
                     </article>
                 </div>
                 <Footer />
