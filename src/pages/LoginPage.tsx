@@ -62,8 +62,8 @@ export default function LoginPage() {
                             <input id="password" className='joinMail' title='Enter your password here' placeholder='password' value={password} type="password" onChange={getPassword} />
                         </div>
                         <button className='subscribeBTN' type='submit' onClick={handleSubscribe} >Sign in</button>
-
-                    </form></div>}
+                    </form>
+                </div>}
                 {subscribe.isSubscribed && <p className='successSubscribe'>You've logged successfully! Now view <Link to='datapage'>List of employees</Link></p>}
 
             </div>

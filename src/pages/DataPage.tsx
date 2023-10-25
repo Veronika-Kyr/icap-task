@@ -27,7 +27,7 @@ export default function DataPage() {
             <div className='page'>
                 <Header />
                 <div className='datapage'>
-                    <div className='homepage-cover'>
+                    <div>
                         <h2 className='headContent'> List of employees</h2>
                     </div>
                     <div className='table-content'>
@@ -45,8 +45,7 @@ export default function DataPage() {
                                 {users.fetchStatus === 'success' && (users.data.results.slice(indexOfFirstRecord,
                                     indexOfLastRecord)).map((user, index) => {
                                         return (
-                                            <tr className='tableRowContent' key={index} >
-
+                                            <tr key={index} >
                                                 <td> <Link title="Click to edit this record" to={`${user.id}`}>{user.name}</Link></td>
                                                 <td>{user.birthday_date}</td>
                                                 <td >{user.email}</td>
@@ -68,7 +67,7 @@ export default function DataPage() {
                         Hello!
                         So, what additional information can be written here but cannot be found in my CV or on my LinkedIn page?..
                         I’m Veronika and here is my task. I don’t know whether you’d like my project but I’m sure that under control of Seniors, Leads and Mentors from your company I’ll be working faster, better and my code will be cleaner)))) I adore coding. I always say Front-end development is exciting for me, because I feel like being an artist who draws a website using HTML/CSS, or a witch who adds functionality to a website through manipulations with "magic" JS tools)))
-                        Also, if you find a user in your database whose name was changed into a heavy metal or rock star’s name, be sure it was definitely me while testing PATCH request 😉
+                        And if you accidentally find a user in your database whose name was changed into a heavy metal or rock star’s name, be sure it was definitely me while testing PATCH request 😉
                         What about me as a person and my private life? I used to be an Internally Displaced Person twice. And it just made me stronger. My life challenges are like those lemons which I catch and transform into lemonade. And, of course, like all of us in Ukraine, I never surrender 💙💛
 
                     </article>

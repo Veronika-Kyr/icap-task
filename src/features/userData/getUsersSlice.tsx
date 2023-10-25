@@ -13,9 +13,6 @@ const usersSlice = createSlice({
     name: 'users',
     initialState: { data: {}, fetchStatus: '' } as { data: { results: IUser[] }, fetchStatus: string },
     reducers: {
-        /*  updateUsers(state, action) {
-              state.data = action.payload;
-          }*/
     },
     extraReducers: (builder) => {
         builder.addCase(fetchUsers.fulfilled, (state, action) => {
@@ -34,4 +31,3 @@ const usersSlice = createSlice({
 
 export default usersSlice;
 
-//export const { updateUsers } = usersSlice.actions;

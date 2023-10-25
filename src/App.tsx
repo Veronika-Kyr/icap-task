@@ -12,7 +12,6 @@ function App() {
         <Route path='/' element={<LoginPage />} />
         <Route path='/datapage' element={<DataPage />} />
         <Route path='/datapage/:id' element={<UserPage />} />
-        {/* <Route path='*' element={<NotFound />} /> */}
       </Routes>
     </>
   )

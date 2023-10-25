@@ -26,12 +26,10 @@ const editUserSlice = createSlice({
             if (!action.payload.error) {
                 state.data = action.payload
                 state.fetchStatus = 'success'
-
             }
             else {
                 state.data = action.payload
                 state.fetchStatus = ''
-
             }
         })
             .addCase(fetchEdit.pending, (state) => {

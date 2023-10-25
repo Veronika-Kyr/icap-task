@@ -1,5 +1,4 @@
-
-import { useEffect, useState } from 'react';
+import { useEffect, useState, createRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useAppSelector, useAppDispatch } from '../app/hooks'
@@ -9,12 +8,10 @@ import { fetchEdit } from '../features/userData/editUserSlice';
 import { IUser } from '../interfaces/user';
 import { IUserParams } from '../interfaces/user';
 
-//type UserParams = {
-//  id: string;
-//};
 
 export function UserPage() {
     const user = useAppSelector((state) => state.user);
+    const form = createRef<HTMLFormElement>();
     const [formState, setFormState] = useState<IUser>({
         "id": '',
         "name": '',
@@ -24,40 +21,29 @@ export function UserPage() {
         "address": ''
     });
     const [formVisibslity, setFormVisibslity] = useState(false);
+    const [clickedSaveBTN, setClickedSaveBTN] = useState(false);
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const param: IUserParams = useParams();
-    // const { id } = useParams<UserParams>();
-    console.log(param);
 
     useEffect(() => {
         dispatch(fetchIdUser(param.id as string))
         setFormState(user.onIDdata);
-    }, [dispatch])
+    }, [dispatch, clickedSaveBTN])
 
     function changeState(value: string, field: string) {
         const clone = { ...formState };
         clone[field as keyof IUser] = value;
-        //  console.log(keyof IUser);
         setFormState(clone);
     }
-
-
-
-
-
-    /* function changeState(value: string | number, field: keyof IUser) {
-         const clone: IUser = { ...formState };
-         clone[field] = value;
-         setFormState(clone);
-     }*/
 
     function submitData(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
         dispatch(fetchEdit(formState));
-
-        //  form.current?.reset();
-        //  setdisabledBtn(true);
+        form.current?.reset();
+        setFormVisibslity(false);
+        setClickedSaveBTN(true);
+        window.alert('You have saved all the changes successfully');
     }
 
     function handleName(event: React.FormEvent<HTMLInputElement>) {
@@ -89,7 +75,7 @@ export function UserPage() {
                 </div>
                 <div className='contentEdit'>
                     <h2 className='head'>Edit information about the User</h2>
-                    <button className='editBTN' onClick={() => setFormVisibslity(true)}>🖊 Edit fields</button>
+                    <button className='editBTN' onClick={() => { setFormVisibslity(true), setClickedSaveBTN(false) }}>🖊 Edit fields</button>
 
                     <table className='table'>
                         <thead>
@@ -113,7 +99,7 @@ export function UserPage() {
                         </tbody>
                     </table>
                     {formVisibslity && <div>
-                        <form className='editForm' onSubmit={submitData}>
+                        <form className='editForm' onSubmit={submitData} ref={form}>
                             <div className='inputBlock'>
                                 <input className='inputEdit' type='text' onChange={handleName} />
                                 <input className='inputEdit' type='text' onChange={handleBDay} />
